@@ -1,0 +1,24 @@
+.form{
+
+
+ .input{
+ 	width: 15em;
+ 	 height: 2em;
+ 	float: left;
+     border-radius: 4px;
+ 	outline:0;
+
+ }
+
+ .submit{
+ 	display: block;
+ 	width: 2em;
+ 	float: left;
+ 	margin-left: 1em;
+ 	 height: 2em;
+ 	 background-color: #409EFF;
+ 	border:0px solid  #208eda;
+     outline:0;
+ 	color: white
+ }
+}
