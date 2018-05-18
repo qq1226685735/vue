@@ -10,7 +10,7 @@
             <input type="password" name="password"  class="input-main" maxlength="13" v-model="userData.userpassword">
             <div  class="verify"><input type="text" name="verify" maxlength="4"><span>验证码</span></div>
             <button class="login-button" @click="login()">登录</button>
-            {{userData.username}}
+         
 		</div>
 	</div>
 	</div>
@@ -21,7 +21,8 @@
 	width: 100%;
 	height: 100%;
 	position: fixed;
-	
+	background-color: red;
+	background-image:url(../../assets/images/1.jpg);
 	z-index: 2;
 }
 .login{
@@ -135,8 +136,20 @@ export default{
          alert(data);
 		},
 		login:function(){
-			this.$ajax.post("get/login",this.userData);
+			this.$ajax.post("get/login",this.userData,function(userdata){
+				 localStorage.setItem('token',userdata.token);
+				  sessionStorage.setItem('username',userdata.user.userName);
+				   sessionStorage.setItem('userpassword',userdata.user.passWord);
+				  
+               
+
+
+			});
+			console.log(localStorage.getItem('token'));
+			  console.log( sessionStorage.getItem('username'));
+		
 		}
+
 	}
 }
 </script>

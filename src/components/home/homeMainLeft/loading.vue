@@ -12,7 +12,7 @@
 		
 	}
 	#loading-center-absolute {
-		margin-left:4em;
+		margin-left:3.6em;
 		height: 10px;
 		width: 8em;
 	
@@ -22,7 +22,7 @@
 		width:10px;
 		height: 10px;
 		margin:0 auto;
-		background-color: grey;
+		background-color: #409EFF;
 		float: left;
 		margin-right: 8px;
 		-moz-border-radius: 50% 50% 50% 50%;
@@ -85,6 +85,7 @@
 				<div class="object" id="object_one"></div>
 				<div class="object" id="object_two"></div>
 				<div class="object" id="object_three"></div>
+
 			</div>
 		</div>
 	</div>

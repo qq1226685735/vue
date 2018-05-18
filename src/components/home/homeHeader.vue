@@ -1,6 +1,7 @@
 <template>
 	<div id="header">
-		<div class="my" @click="pushto('my',null)"><li class="el-icon-menu" style="font-size:20px"></li></div>
+		<div class="my" @click="pushto('my',null)"><img src="@/assets/images/icon/我的.png" width="100%" height="100%" id="img1"/>
+         </div>
 		<Search class="search"></Search>
 	</div>
 </template>
@@ -17,7 +18,6 @@
 	line-height: 2em;
     background-color:#409EFF;
     color: white;
-    opacity: 0.9;
 
 }
 .search{
@@ -27,10 +27,10 @@
 	right: 0;
 }
 .my{
-	width: 3em;
-		font-size: 16px;
+	width: 2em;
+	height: 2em;
 	position: absolute;
-    left: 0;
+    left: 0.5em;
 }
 
 </style>

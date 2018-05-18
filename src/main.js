@@ -5,9 +5,8 @@ import App from './App'
 import router from './router'
 import axios  from "axios"
 import ajax  from "./service/ajax.js"
-
+import BScroll from 'better-scroll'
 import 'element-ui/lib/theme-chalk/index.css';
-
 import {
   Pagination,
   Dialog,
@@ -140,9 +139,16 @@ Vue.use(Main);
 Vue.use(Footer);
 Vue.use(Loading.directive);
 Vue.use(axios);
-
+Vue.prototype.$loading = Loading.service;
+Vue.prototype.$msgbox = MessageBox;
+Vue.prototype.$alert = MessageBox.alert;
+Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$prompt = MessageBox.prompt;
+Vue.prototype.$notify = Notification;
+Vue.prototype.$message = Message;
+Vue.prototype.$url="http://127.0.0.1:8081/";
 Vue.prototype.$ajax=ajax;
-Vue.prototype.$ax = axios;
+Vue.prototype.$axios=axios;
 Vue.prototype.replaceto=function (path,cs) { //cs:{userid:1}
   
 	this.$router.replace({ path: path, query:cs});
@@ -150,7 +156,7 @@ Vue.prototype.replaceto=function (path,cs) { //cs:{userid:1}
 }
 Vue.prototype.pushto=function (path,cs) { //cs:{userid:1}
   
-	this.$router.push({ path: path, query:cs});
+	this.$router.push({ path: path,  query:cs});
 	// body...
 }
 Vue.prototype.back=function () { 
@@ -158,6 +164,35 @@ Vue.prototype.back=function () {
 	this.$router.go(-1);
 	
 };
+Vue.filter('per', function (value) {
+  value=value+'';
+ switch(value)
+{
+case '0':
+  return "普通用户";
+  break;
+case '1':
+  return "自媒体";
+  break;
+case '2':
+  return "机构";
+  break;
+case '3':
+  return "审核员";
+  break;
+case '4':
+  return "管理员";
+  break;
+default:
+  return "未知";
+}
+});
+Vue.filter('omit', function (value) {
+return value.substr(0,19)+"···";
+})
+Vue.filter('omitm', function (value) {
+return value.substr(0,15)+"···";
+})
 
 new Vue({
   el: '#app',

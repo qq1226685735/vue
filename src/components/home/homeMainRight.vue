@@ -1,17 +1,18 @@
 <template>
   <div class="main-right">
    <Account></Account>
-   <Hotspot></Hotspot>
+   <Joke></Joke>
    
     </div>
 </template>
 <script type="text/javascript">
 import Account from './homeMainRight/account.vue'
-import Hotspot from './homeMainRight/hotspot.vue'
+import Joke from './homeMainRight/joke.vue'
 
 export default{
   name:'main-right',
-  components:{Account,Hotspot}
+  components:{Account,Joke},
+  
 }
 </script>
 <style lang="scss">

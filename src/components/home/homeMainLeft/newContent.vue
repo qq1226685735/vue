@@ -6,6 +6,7 @@
         <div class="title"><slot name="title"></slot></div>
         <div class="others"><slot name="others"></slot></div>
 		</div>
+		<slot name="extend"></slot>
 	</div>
 
 
@@ -18,6 +19,6 @@
 		
 	}
 </script>
-<style lang="sass">
+<style lang="sass" scoped>
 @import "newContent.scss"
 </style>

@@ -22,7 +22,7 @@ import E from 'wangeditor'
       },
       mounted() {
         var editor = new E('#editorElem');
-      editor.customConfig.uploadImgServer = '127.0.0.1:8888/upLoadFile'; //上传URL
+      editor.customConfig.uploadImgServer = '127.0.0.1:8081/upLoadFile'; //上传URL
 editor.customConfig.uploadImgMaxSize = 3 * 1024 * 1024;
 editor.customConfig.uploadImgMaxLength = 5;    
 editor.customConfig.uploadFileName = 'myFileName';

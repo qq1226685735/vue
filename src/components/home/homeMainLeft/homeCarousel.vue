@@ -1,19 +1,14 @@
 <style type="text/css">
 #lunbo{
-    position: absolute;
-    top:3em;
-    left: 15em;
+    position: relative;
     width: 45em;
 	height: 18em;
 	
 }
+
 @media screen and (max-width:480px){
 #lunbo{
-	top:4em;
-}
-}
-@media screen and (max-width:480px){
-#lunbo{
+	top:0;
   left: 0;
   width: 100%;
   height: 13em;
@@ -38,7 +33,7 @@
 #button li{
 	list-style: none;
 	height: 20%;
-	
+	line-height: 1.5em;
 	color: white;
 	
 
@@ -110,7 +105,7 @@ background-color: black;
   #button{
   	display: none;
   }
-  #lunbo:hover .ca-button {
+  #lunbo .ca-button {
 	 	display:block;
   } 
   
@@ -160,55 +155,55 @@ background-color: black;
 <template>
 	<div id="lunbo">
 		  <transition name="hide">
-		<div v-if="num==1" class="imgdiv"><img src="@/assets/images/1a.jpg" width="100%" height="100%"></div>
+		<div v-if="num==1" class="imgdiv" @click="opennew(cnews[0].id,cnews[0].userid)"><img :src="cnews[0].newimg" width="100%" height="100%"></div>
 		 </transition>
 		  <transition name="hide">
-		<div v-if="num==2" class="imgdiv"><img src="@/assets/images/2a.jpg" width="100%" height="100%"></div>
+		<div v-if="num==2" class="imgdiv" @click="opennew(cnews[1].id,cnews[1].userid)"><img :src="cnews[1].newimg" width="100%" height="100%"></div>
 		</transition>
 		 <transition name="hide">
-		<div v-if="num==3" class="imgdiv"><img src="@/assets/images/3a.jpg" width="100%" height="100%"></div>
+		<div v-if="num==3" class="imgdiv" @click="opennew(cnews[2].id,cnews[2].userid)"><img :src="cnews[2].newimg" width="100%" height="100%"></div>
 		</transition>
 		 <transition name="hide">
-		<div v-if="num==4" class="imgdiv"><img src="@/assets/images/4a.jpg" width="100%" height="100%"></div>
+		<div v-if="num==4" class="imgdiv" @click="opennew(cnews[3].id,cnews[3].userid)"><img :src="cnews[3].newimg" width="100%" height="100%"></div>
 			</transition>
 			<transition name="hide">
-		<div v-if="num==5" class="imgdiv"><img src="@/assets/images/4a.jpg" width="100%" height="100%"></div>
+		<div v-if="num==5" class="imgdiv" @click="opennew(cnews[4].id,cnews[4].userid)"><img :src="cnews[4].newimg" width="100%" height="100%"></div>
 			</transition>
 			
 	   
 		<ul id="button">
-			<li @mouseover="num=1"  :class="{changebg:num==1}">标题1</li>
+			<li @mouseover="num=1"  :class="{changebg:num==1}">{{cnews[0].newtitle|omit}}</li>
 			<li @mouseover="num=2"  :class="{changebg:num==2}">
-			标题2</li>
+			{{cnews[1].newtitle|omit}}</li>
 			<li @mouseover="num=3"  :class="{changebg:num==3}">
-			标题3</li>
+			{{cnews[2].newtitle|omit}}</li>
 			<li @mouseover="num=4"  :class="{changebg:num==4}">
-			标题4</li>
+			{{cnews[3].newtitle|omit}}</li>
 			<li @mouseover="num=5"  :class="{changebg:num==5}">
-			标题5</li>
+			{{cnews[4].newtitle|omit}}</li>
 			
 		</ul>
   
 		<ul id="button-mobile">
 			<transition name="title">
-			<li @mouseover="num=1"  v-if="num==1">标题1
+			<li @mouseover="num=1"  v-if="num==1">{{cnews[0].newtitle|omitm}}
 			</li>
 			</transition>
 			<transition name="title">
 			<li @mouseover="num=2"  v-if="num==2">
-			标题2</li>
+			{{cnews[1].newtitle|omitm}}</li>
 			</transition>
 			<transition name="title">
 			<li @mouseover="num=3"  v-if="num==3">
-			标题3</li>
+			{{cnews[2].newtitle|omitm}}</li>
 			</transition>
 			<transition name="title">
 			<li @mouseover="num=4"  v-if="num==4">
-			标题4</li>
+			{{cnews[3].newtitle|omitm}}</li>
 			</transition>
 			<transition name="title">
 			<li @mouseover="num=5"  v-if="num==5">
-			标题5</li>
+			{{cnews[4].newtitle|omitm}}</li>
 			</transition>
 			
 		</ul>
@@ -227,14 +222,15 @@ export default{
          num:1
 		}
 	},
-	created(){
+	props:['cnews'],
+	mounted(){
 		var that=this;
       setInterval(function(){ 
      if(that.num==4) that.num=5;
            else  that.num=(that.num+1)%5;
          	
 
-},3000);
+},5000);
 	},
 	methods:{
 
@@ -247,7 +243,11 @@ export default{
 			if(this.num==1) this.num=5;
            else  this.num=(this.num-1)%5;
          	
-		}
+		},
+		opennew(newid,userid){
+       this.pushto('new',{id:newid,user:userid})
+
+       } 
 	 
 	}
 }
